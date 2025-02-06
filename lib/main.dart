@@ -1,6 +1,6 @@
+// main.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
 
 void main() async {
@@ -15,42 +15,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Firebase Auth',
       debugShowCheckedModeBanner: false,
-      home: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasData) {
-            return HomePage();
-          } else {
-            return LoginPage();
-          }
-        },
-      ),
+      home: LoginPage(), // Navigate to LoginPage at the start
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromRGBO(17, 142, 245, 1)),
         useMaterial3: true,
       ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Welcome'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.logout),
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-          )
-        ],
-      ),
-      body: Center(child: Text('Logged in successfully!')),
     );
   }
 }
