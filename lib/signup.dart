@@ -31,12 +31,32 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+
+  final viewInsets = MediaQuery.of(context).viewInsets.bottom;
+
     return Scaffold(
+      
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if (viewInsets == 0)
+            Image.asset(
+              'assets/images/health.png',
+              height: 150,
+            ),
+            SizedBox(height: 20),
+            const Text(
+                'Healthify',
+                style: TextStyle(
+                  fontFamily: 'JosefinSans',
+                  fontSize: 35,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            SizedBox(height: 15),
             TextField(
               controller: _emailController,
               decoration: InputDecoration(labelText: 'Email'),
