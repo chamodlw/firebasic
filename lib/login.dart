@@ -1,6 +1,7 @@
 import 'package:fire2/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../styles/styles.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,7 +30,18 @@ class _LoginPageState extends State<LoginPage> {
   final viewInsets = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromARGB(255, 93, 195, 242),
+            Color.fromARGB(255, 202, 235, 250),
+          ],
+        ),
+      ),
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,11 +55,13 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20),
             const Text(
                 'Healthify',
-                style: TextStyle(
-                  fontFamily: 'JosefinSans',
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Styles.title1,
+                textAlign: TextAlign.center,
+              ),
+            SizedBox(height: 5),
+            const Text(
+                'Your health is our responsibility.',
+                style: Styles.title2,
                 textAlign: TextAlign.center,
               ),
             SizedBox(height: 15),
@@ -77,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
+    ),
     );
   }
 }

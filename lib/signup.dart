@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
+import 'styles/styles.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -23,6 +24,7 @@ class _SignupPageState extends State<SignupPage> {
       await _auth.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
+        
       );
     } catch (e) {
       print('Error: $e');
@@ -35,8 +37,18 @@ class _SignupPageState extends State<SignupPage> {
   final viewInsets = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
-      
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromARGB(255, 93, 195, 242),
+            Color.fromARGB(255, 202, 235, 250),
+          ],
+        ),
+      ),
+      child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -49,11 +61,13 @@ class _SignupPageState extends State<SignupPage> {
             SizedBox(height: 20),
             const Text(
                 'Healthify',
-                style: TextStyle(
-                  fontFamily: 'JosefinSans',
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Styles.title1,
+                textAlign: TextAlign.center,
+              ),
+            SizedBox(height: 5),
+            const Text(
+                'Your health is our responsibility.',
+                style: Styles.title2,
                 textAlign: TextAlign.center,
               ),
             SizedBox(height: 15),
@@ -87,6 +101,7 @@ class _SignupPageState extends State<SignupPage> {
             ),
           ],
         ),
+      ),
       ),
     );
   }
