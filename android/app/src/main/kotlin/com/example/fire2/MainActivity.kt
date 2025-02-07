@@ -1,4 +1,4 @@
-package com.example.fire2
+package com.app.fireapp
 
 import io.flutter.embedding.android.FlutterActivity
 

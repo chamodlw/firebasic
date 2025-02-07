@@ -11,27 +11,30 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> handleLogin() async {
+
     try {
       await _auth.signInWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+      print('Logged in successfully');
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } catch (e) {
-  print('Error: $e');
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text('Login Failed: ${e.toString()}')),
-  );
-}
-
+      print('Error: $e');
+    print({_emailController.text.trim(), _passwordController.text.trim()});
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login Failed: ${e.toString()}')),
+      );
+    }
   }
 
   @override
