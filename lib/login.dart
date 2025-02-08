@@ -22,10 +22,10 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> handleLogin() async {
 
     try {
-      await _auth.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
+      // await _auth.signInWithEmailAndPassword(
+      //   email: _emailController.text.trim(),
+      //   password: _passwordController.text.trim(),
+      // );
       print('Logged in successfully');
       AutoRouter.of(context).push(const HomeRoute());
     } catch (e) {
@@ -78,27 +78,48 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 15),
               TextField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.close, size: 20.0, color: Colors.grey),
+                    onPressed: () {
+                      _emailController.clear();
+                    },
+                  ),
+                  ),
               ),
               TextField(
                 controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.close,size: 20.0, color: Colors.grey),
+                    onPressed: () {
+                      _passwordController.clear();
+                    },
+                  ),
+                ),
                 obscureText: true,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Don\'t have an account? ', style: Styles.text2),
+
+                TextButton(
+                  onPressed: () {
+                  AutoRouter.of(context).push(const SignupRoute());
+                },
+                child: Text('SignUp', style: Styles.text1),
+                ),
+                  ]
+                ),
               ElevatedButton(
                 onPressed: handleLogin,
-                child: Text('Login'),
+                child: Text('Login', style: Styles.text1),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignupPage()),
-                  );
-                },
-                child: Text('Create Account'),
-              ),
+              
             ],
           ),
         ),

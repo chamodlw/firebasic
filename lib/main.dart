@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     AppRouter appRouter = AppRouter();
     return MaterialApp.router(
+      title: 'Fire2',
+      debugShowCheckedModeBanner: false,
       routerConfig: appRouter.config(),
     );
   }

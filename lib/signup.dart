@@ -29,7 +29,7 @@ class _SignupPageState extends State<SignupPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-       AutoRouter.of(context).push(const LoginRoute());
+       AutoRouter.of(context).push(const HomeRoute());
     } catch (e) {
       print('Error: $e');
     }
@@ -76,32 +76,58 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(height: 15),
               TextField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.close, size: 20.0, color: Colors.grey),
+                    onPressed: () {
+                      _emailController.clear();
+                    },
+                  ),
+                  labelText: 'Email'),
               ),
               TextField(
                 controller: _passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.close, size: 20.0, color: Colors.grey),
+                    onPressed: () {
+                      _emailController.clear();
+                    },
+                  ),
+                  labelText: 'Password'),
                 obscureText: true,
               ),
               TextField(
                 controller: _confirmPasswordController,
-                decoration: InputDecoration(labelText: 'Confirm Password'),
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.close, size: 20.0, color: Colors.grey),
+                    onPressed: () {
+                      _emailController.clear();
+                    },
+                  ),
+                  labelText: 'Confirm Password'),
                 obscureText: true,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Already have an account? ', style: Styles.text2),
+
+                TextButton(
+                  onPressed: () {
+                  AutoRouter.of(context).push(const LoginRoute());
+                },
+                child: Text('Login', style: Styles.text1),
+                ),
+                  ]
+                ),
               ElevatedButton(
                 onPressed: handleSignup,
-                child: Text('Register'),
+                child: Text('Register', style: Styles.text1),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
-                },
-                child: Text('Login'),
-              ),
+             
             ],
           ),
         ),
