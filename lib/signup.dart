@@ -1,9 +1,12 @@
 // signup.dart
+import 'package:auto_route/auto_route.dart';
+import 'package:fire2/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login.dart';
 import 'styles/styles.dart';
 
+@RoutePage()
 class SignupPage extends StatefulWidget {
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -26,10 +29,7 @@ class _SignupPageState extends State<SignupPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => LoginPage()),
-      );
+       AutoRouter.of(context).push(const LoginRoute());
     } catch (e) {
       print('Error: $e');
     }

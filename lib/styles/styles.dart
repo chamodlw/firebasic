@@ -8,7 +8,7 @@ class Styles {
   );
 
   static const TextStyle title2 = TextStyle(
-    fontFamily: 'JosefinSans',
+    fontFamily: 'Roboto',
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );

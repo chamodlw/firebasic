@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   # firebase_core: ^2.10.0
   firebase_auth: ^4.4.0
+  auto_route: ^8.3.0
 
 
 
@@ -44,7 +45,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  auto_route_generator: ^8.1.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -63,6 +64,9 @@ flutter:
     - family: JosefinSans
       fonts:
         - asset: assets/fonts/JosefinSans-SemiBold.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto_SemiCondensed-Regular.ttf
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
