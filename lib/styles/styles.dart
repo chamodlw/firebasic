@@ -24,7 +24,10 @@ class Styles {
     fontSize: 16,
     color: Colors.black,
   );
-
+  static const TextStyle text11 = TextStyle(
+    fontSize: 15,
+    color: Colors.black,
+  );
   static const TextStyle text2 = TextStyle(
     fontSize: 13,
     color: Colors.black,

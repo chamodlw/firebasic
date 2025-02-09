@@ -1,9 +1,9 @@
 // homepage.dart
 import 'package:auto_route/auto_route.dart';
+import 'package:fire2/components/bottom_scroll.dart';
 import 'package:fire2/components/section_scroller.dart';
 import 'package:flutter/material.dart';
 import '../components/show_alert.dart';
-import '../styles/styles.dart';
 import 'package:fire2/components/titlecard.dart';
 
 @RoutePage()
@@ -44,10 +44,10 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 6,
+                    flex: 8,
                     child: Center(
-                      child: TitleCard(),
-                    ),
+                      child: BottomScroll(),
+                    )
                   ),
                 ],
               ),

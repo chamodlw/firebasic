@@ -22,10 +22,10 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> handleLogin() async {
 
     try {
-      // await _auth.signInWithEmailAndPassword(
-      //   email: _emailController.text.trim(),
-      //   password: _passwordController.text.trim(),
-      // );
+      await _auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
       print('Logged in successfully');
       AutoRouter.of(context).push(const HomeRoute());
     } catch (e) {

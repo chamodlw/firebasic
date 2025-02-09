@@ -7,7 +7,7 @@ class TitleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(13),
       ),
