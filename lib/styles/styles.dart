@@ -32,4 +32,7 @@ class Styles {
     fontSize: 13,
     color: Colors.black,
   );
+  static const Color gradientStart = Color(0xFF93B0E1);
+  static const Color gradientEnd = Color(0xFF2696D6);
+  
 }

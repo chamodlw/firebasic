@@ -27,7 +27,7 @@ class SectionScroller extends StatelessWidget {
           items: items.map((item) {
             return Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
                 decoration: BoxDecoration(
                 color: Color.fromARGB(255, 93, 195, 242),
                 borderRadius: BorderRadius.circular(13),

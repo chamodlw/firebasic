@@ -1,10 +1,17 @@
+import 'package:fire2/components/bottom_cards.dart';
 import 'package:fire2/styles/styles.dart';
 import 'package:flutter/material.dart';
 
-class BottomScroll extends StatelessWidget {
+class BottomScroll extends StatefulWidget {
   BottomScroll({super.key});
 
-  final List<String> items = <String>['All', 'Neurologist', 'Allergy', 'ENT', 'Urologist', 'Others'];
+  @override
+  _BottomScrollState createState() => _BottomScrollState();
+}
+
+class _BottomScrollState extends State<BottomScroll> {
+  final List<String> items = ['All', 'Neurologist', 'Allergy', 'ENT', 'Urologist', 'Others'];
+  String selectedItem = 'All'; // Default selected item
 
   @override
   Widget build(BuildContext context) {
@@ -14,46 +21,60 @@ class BottomScroll extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                   Row(
+              flex: 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                       Expanded(
-                       child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 10),
-                         height: 40,
-                         child: ListView(
-                         scrollDirection: Axis.horizontal,
-                         children: [
-                            for (var item in items)
-                              Padding(
+                      Expanded(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          height: 40,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: items.map((item) {
+                              final isSelected = item == selectedItem;
+                              return Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: isSelected
+                                        ? Color.fromARGB(255, 93, 195, 242)
+                                        : Colors.white, // Unselected button background
+                                    foregroundColor: isSelected
+                                        ? Colors.white // Selected text color
+                                        : Colors.black, // Unselected text color
+                                    side: BorderSide(
+                                      color: isSelected ? Colors.blue : Colors.grey, // Border color
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedItem = item; // Update selected item
+                                    });
+                                  },
                                   child: Text(item, style: Styles.text11),
                                 ),
-                              ),
-                         ],
-                         ),
-                       ),
-                       ),
-                     
-                   ]),
-                  ],
-                )),
-            Expanded(
-              flex: 12,
-              child: Text(
-                'Your health is our responsibility.',
-                style: Styles.text1,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
+            Expanded(
+              flex: 14,
+                child: BottomCards(selectedItem: selectedItem)
+              
+            ),
           ],
-        ),
       ),
+    ),
     );
-  }
+}
 }
