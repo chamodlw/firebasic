@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:fire2/routes/app_router.gr.dart';
 import 'package:flutter/material.dart';
 
 class SectionScroller extends StatelessWidget {
@@ -44,38 +46,50 @@ class SectionScroller extends StatelessWidget {
                   width: 2,
                 ),
                 ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 7,
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                item['title'],
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+              child: 
+              GestureDetector(
+                onTap: () {
+                  if (item['title'] == 'New Channel') {
+                    AutoRouter.of(context).push(const NewChannel());
+                  } else if (item['title'] == 'Channel History') {
+                    AutoRouter.of(context).push(const ChannelHistory());
+                  } else if (item['title'] == 'Contact Us') {
+                    AutoRouter.of(context).push(const ContactUs());
+                  }
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 7,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  item['title'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ]),
-                      ),
-                      Expanded(
-                        flex: 3,
-                        child: Icon(
-                          item['icon'],
-                          color: Colors.white,
-                          size: 30,
+                              ]),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        Expanded(
+                          flex: 3,
+                          child: Icon(
+                            item['icon'],
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             );
           }).toList(),

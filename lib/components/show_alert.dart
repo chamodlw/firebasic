@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fire2/routes/app_router.dart';
+import 'package:fire2/routes/app_router.gr.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../styles/styles.dart';
 
-@RoutePage()
 class ShowAlert extends StatelessWidget {
   const ShowAlert({super.key}); // Added constructor for consistency
 
